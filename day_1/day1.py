@@ -32,7 +32,6 @@ def part_1():
             max_idx = curr_idx
 
     sol_1 = max
-    print(max_idx)
     print('Part 1: {}'.format(sol_1))
 
 def part_2():
@@ -54,11 +53,19 @@ def part_2():
             curr_elve = []
             elve_iter += 1
 
-    sorted_list = []
-    sorted_list = sorted(data, key=data.get, reverse=True)
-    print(sorted_list)
+    data_mean = {}
+    for key, value in data.items():
+        data_mean[key] = np.sum(value)
 
-    sol_2 = 'nan'
+    data_sorted = dict(sorted(data_mean.items(), key=lambda item: item[1]))
+    data_keys = list(data_sorted.keys())
+    data_val = list(data_sorted.values())
+
+    sum = 0
+    for i in range(1,4,1):
+        sum = sum + float(data_val[-i])
+
+    sol_2 = sum
     print('Part 2: {}'.format(sol_2))
 
 # Main
